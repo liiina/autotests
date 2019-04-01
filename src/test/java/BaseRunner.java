@@ -13,11 +13,8 @@ public class BaseRunner {
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "/Users/lina/selenium drivers/chromedriver");
         System.setProperty("webdriver.gecko.driver", "/Users/lina/selenium drivers/geckodriver");
-        if (System.getProperty("browser") != null && System.getProperty("browser").equals("chrome")) {
-            driver = BrowsersFactory.chrome.create();
-        } else {
-            driver = BrowsersFactory.firefox.create();
-        }
+        driver = BrowsersFactory.chrome.create();
+
         baseUrl = "https://www.tinkoff.ru/mobile-operator/tariffs/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
