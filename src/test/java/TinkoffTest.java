@@ -1,32 +1,14 @@
-
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 
 import static junit.framework.TestCase.assertEquals;
 
 public class TinkoffTest extends BaseRunner {
 
     @Test
-    public void test1() {
-        driver.get(baseUrl);
-        driver.findElement(By.name("fio")).click();
-        driver.findElement(By.name("fio")).sendKeys(Keys.ENTER);
-        driver.findElement(By.xpath("//*[contains(@class,'fio-field')]//*[contains(@class,'error-message')]"));
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Фамилия, имя и отчество'])[1]/following::div[3]")).click();
-        assertEquals("Укажите ваше ФИО", driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Фамилия, имя и отчество'])[1]/following::div[3]")).getText());
-        driver.findElement(By.name("phone_mobile")).click();
-        driver.findElement(By.name("phone_mobile")).sendKeys(Keys.ENTER);
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Контактный телефон'])[1]/following::div[2]")).click();
-        assertEquals("Необходимо указать номер телефона", driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Контактный телефон'])[1]/following::div[2]")).getText());
-        driver.findElement(By.name("email")).click();
-        driver.findElement(By.name("email")).sendKeys(Keys.ENTER);
-    }
-
-    @Test
-    public void test2() {
+    public void errorMessagesChecking() {
         driver.get(baseUrl);
         driver.findElement(By.name("fio")).click();
         driver.findElement(By.name("fio")).clear();
@@ -50,7 +32,7 @@ public class TinkoffTest extends BaseRunner {
     }
 
     @Test
-    public void test3() {
+    public void googleRedirect() {
         driver.get("https://www.google.com/search?q=%D0%BC%D0%BE%D0%B1%D0%B0%D0%B9%D0%BB+%D1%82%D0%B8%D0%BD%D1%8C%D0%BA%D0%BE%D1%84%D1%84&oq=%D0%BC%D0%BE%D0%B1%D0%B0%D0%B9%D0%BB+%D1%82%D0%B8%D0%BD%D1%8C%D0%BA%D0%BE%D1%84%D1%84&aqs=chrome..69i57j69i61j0l4.7044j0j8&sourceid=chrome&ie=UTF-8");
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Похожие запросы'])[1]/following::h3[1]")).click();
         assertEquals("Тарифы Тинькофф Мобайла", driver.getTitle());
@@ -59,7 +41,7 @@ public class TinkoffTest extends BaseRunner {
     }
 
     @Test
-    public void test4() {
+    public void equalsMskKrs() {
         driver.get(baseUrl);
         WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Точки продаж'])[1]/following::div[13]")).click();
@@ -78,7 +60,7 @@ public class TinkoffTest extends BaseRunner {
     }
 
     @Test
-    public void test5() {
+    public void buttonPresence() {
         driver.get(baseUrl);
         driver.findElement(By.name("fio")).clear();
         driver.findElement(By.name("fio")).sendKeys("Спирина Лина Сергеевна");
